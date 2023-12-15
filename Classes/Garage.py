@@ -1,11 +1,11 @@
 # Classes/garage.py
 from Database.AutoCommands import AutoCommands
-from Database.DinoSheetCommands import DinoSheetCommands
+from Database.DynoSheetCommands import DynoSheetCommands
 
 class Garage:
     def __init__(self):
         self.auto_commands = AutoCommands()
-        self.dynoSheet_commands = DinoSheetCommands()
+        self.dynoSheet_commands = DynoSheetCommands(self.auto_commands)
 
     def view_all_cars(self):
         all_cars = self.auto_commands.get_all_cars()

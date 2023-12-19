@@ -75,8 +75,12 @@ class DynoSheetCommands:
         self.cursor.execute(query)
         dyno_sheets = self.cursor.fetchall()
 
-        if not dyno_sheets:
-            print("No dyno sheets available.")
-        else:
-            for dyno_sheet in dyno_sheets:
-                print(dyno_sheet)
+        #if not dyno_sheets:
+        #    print("No dyno sheets available.")
+        #else:
+        return dyno_sheets
+        
+    def delete_dyno_sheet(self, dyno_sheet_id):
+        query = 'DELETE FROM "DynoSheet" WHERE "Id" = ?'
+        self.cursor.execute(query, (dyno_sheet_id,))
+        self.conn.commit()

@@ -2,12 +2,14 @@
 from Database.AutoCommands import AutoCommands
 from Database.DynoSheetCommands import DynoSheetCommands
 from Database.CSVExport import CsvExport
+from Database.ExcelExport import ExcelExport
 
 class Garage:
     def __init__(self):
         self.auto_commands = AutoCommands()
         self.dynoSheet_commands = DynoSheetCommands(self.auto_commands)
         self.csv_export = CsvExport()
+        self.excel_export = ExcelExport()
 
     def view_all_cars(self):
         all_cars = self.auto_commands.get_all_cars()
@@ -46,8 +48,14 @@ class Garage:
     def get_dyno_sheet_by_id(self, dyno_sheet_id):
         return self.dynoSheet_commands.get_dyno_sheet_by_id(dyno_sheet_id)
     
-    def export_auto_table(self):
+    def export_auto_table_csv(self):
         self.csv_export.export_auto_table_to_csv()
 
-    def export_dyno_table(self):
+    def export_dyno_table_csv(self):
         self.csv_export.export_dyno_table_to_csv()
+
+    def export_auto_table_excel(self):
+        self.excel_export.export_auto_table_to_excel()
+
+    def export_dyno_table_excel(self):
+        self.excel_export.export_dyno_table_to_excel()

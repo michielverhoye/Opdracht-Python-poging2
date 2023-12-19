@@ -1,4 +1,3 @@
-# CSVExport.py
 import pandas as pd
 from Database.AutoCommands import AutoCommands
 from Database.DynoSheetCommands import DynoSheetCommands
@@ -12,7 +11,6 @@ class CsvExport:
         if autos:
             auto_df = pd.DataFrame(autos, columns=["Auto_Id", "Merk", "Model", "Kilometers", "ProdYear", "DynoSheet_Id"])
 
-            # Export to CSV
             auto_df.to_csv('auto_data.csv', index=False)
 
             print("Auto table data exported to auto_data.csv")
@@ -28,7 +26,6 @@ class CsvExport:
         if dyno_sheets:
             dyno_df = pd.DataFrame(dyno_sheets, columns=["DynoSheet_Id", "MaxHp", "MaxTorque", "Gear", "Fuel", "Auto_Id"])
 
-            # Export to CSV
             dyno_df.to_csv('dyno_data.csv', index=False)
 
             print("Dyno table data exported to dyno_data.csv")

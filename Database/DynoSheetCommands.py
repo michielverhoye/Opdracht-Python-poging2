@@ -11,7 +11,6 @@ class DynoSheetCommands:
         self.conn.close()
 
     def create_dyno_sheet(self, auto_id, max_hp, max_torque, gear, fuel):
-        # Check if the provided auto_id exists in the Auto table
         auto = self.auto_commands.get_car_by_id(auto_id)
         if not auto:
             print(f"Error: Auto with ID {auto_id} not found.")
@@ -26,13 +25,11 @@ class DynoSheetCommands:
         print("DynoSheet created successfully.")
 
     def update_dyno_sheet(self, dyno_sheet_id, max_hp=None, max_torque=None, gear=None, fuel=None):
-        # Check if the provided dyno_sheet_id exists
         dyno_sheet = self.get_dyno_sheet_by_id(dyno_sheet_id)
         if not dyno_sheet:
             print(f"Error: DynoSheet with ID {dyno_sheet_id} not found.")
             return
 
-        # Construct the update query based on provided parameters
         update_query = "UPDATE DynoSheet SET "
         update_params = []
 
@@ -52,14 +49,11 @@ class DynoSheetCommands:
             update_query += "Fuel = ?, "
             update_params.append(fuel)
 
-        # Remove the trailing comma and space
         update_query = update_query.rstrip(', ')
 
-        # Add the WHERE clause
         update_query += " WHERE Id = ?"
         update_params.append(dyno_sheet_id)
 
-        # Execute the update query
         self.cursor.execute(update_query, tuple(update_params))
         self.conn.commit()
         print(f"DynoSheet with ID {dyno_sheet_id} updated successfully.")
@@ -75,9 +69,7 @@ class DynoSheetCommands:
         self.cursor.execute(query)
         dyno_sheets = self.cursor.fetchall()
 
-        #if not dyno_sheets:
-        #    print("No dyno sheets available.")
-        #else:
+        
         return dyno_sheets
         
     def delete_dyno_sheet(self, dyno_sheet_id):

@@ -75,11 +75,11 @@ class GarageUI:
             if choice == '1':
                 self.export_autotable_to_csv()
             elif choice == '2':
-                self.update_dyno_sheet()
+                self.export_autotable_to_excel()
             elif choice == '3':
-                self.export_dyno_table_to_csv()
+                self.export_dynotable_to_csv()
             elif choice == '4':
-                self.delete_dyno_sheet()
+                self.export_dynotable_to_excel()
             elif choice == '5':
                 break
             else:
@@ -149,10 +149,16 @@ class GarageUI:
         self.garage.delete_dyno_sheet(dyno_sheet_id)
 
     def export_autotable_to_csv(self):
-        self.garage.export_auto_table()
+        self.garage.export_auto_table_csv()
 
-    def export_dyno_table_to_csv(self):
-        self.garage.export_dyno_table()
+    def export_dynotable_to_csv(self):
+        self.garage.export_dyno_table_csv()
+
+    def export_autotable_to_excel(self):
+        self.garage.export_auto_table_excel()
+    
+    def export_dynotable_to_excel(self):
+        self.garage.export_dyno_table_excel()
 
 if __name__ == "__main__":
     ui = GarageUI()

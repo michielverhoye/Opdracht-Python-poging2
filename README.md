@@ -1,5 +1,6 @@
 # Opdracht-Python-poging2
 In dit project kan je een garage managen.
+Het database bestand moet in de map "Database" komen.
 Als je het main bestand uitvoert krijg je een menu waarbij je een aantal opties hebt.
 =-= Main Menu =-=
 * Je kan alle autos in je garage bekijken.
